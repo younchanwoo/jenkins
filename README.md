@@ -61,7 +61,7 @@ Jenkins 초기 설정을 위해 관리자 비밀번호가 필요합니다.
 
 8. Jenkins 플러그인 설치
 
-Jenkins 대시보드에서 "Manage Jenkins" > "Manage Plugins"로 이동하여 필요한 플러그인을 설치합니
+Jenkins 대시보드에서 "Manage Jenkins" > "Manage Plugins"로 이동하여 필요한 플러그인을 설치합니다.
 
 9. 로그 보는 방법
 
