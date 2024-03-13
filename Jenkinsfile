@@ -3,7 +3,7 @@ pipeline {
 
     tools {
         // Maven 설정. Jenkins에 정의된 Maven 도구의 이름을 사용해야 함.
-        maven "Maven" // Jenkins 설정에 따라 적절히 변경
+        maven "M3" // "M3"은 예시입니다. 실제 Jenkins 설정에 맞게 변경하세요.
     }
 
     environment {
