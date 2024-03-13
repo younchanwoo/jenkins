@@ -1,28 +1,30 @@
 pipeline {
     agent any
 
+    tools {
+        // Maven 설정. Jenkins에 정의된 Maven 도구의 이름을 사용해야 함.
+        maven "Maven" // Jenkins 설정에 따라 적절히 변경
+    }
+
     environment {
-        // JBoss CLI 경로를 주어진 새로운 위치로 변경
+        // 환경 변수 설정
         JBOSS_CLI = '/jboss/domains/a01/bin/jboss-cli.sh'
-        JBOSS_SERVER = 'localhost:9990' // JBoss 관리 인터페이스 주소, 필요에 따라 조정
-        DEPLOYMENT_NAME = 'simple.war' // 배포할 애플리케이션 WAR 파일명, 실제 파일명에 맞게 조정
-        GIT_REPO = 'https://github.com/younchanwoo/jenkins.git'
+        JBOSS_SERVER = 'localhost:9990' // JBoss 관리 인터페이스 주소, 실제 환경에 맞게 조정
+        DEPLOYMENT_NAME = 'simple.war' // 실제 파일명에 맞게 조정
     }
 
     stages {
         stage('Checkout') {
             steps {
                 // Git 저장소에서 소스 코드 체크아웃
-                git url: "${env.GIT_REPO}"
+                git url: 'https://github.com/younchanwoo/jenkins.git'
             }
         }
 
         stage('Build') {
             steps {
-                script {
-                    // Maven을 사용하여 프로젝트 빌드, Maven이 설치되어 있고, pom.xml 파일이 저장소에 있는 경우
-                    sh 'mvn clean package'
-                }
+                // Maven을 사용하여 프로젝트 빌드
+                sh 'mvn clean package'
             }
         }
 
