@@ -3,7 +3,7 @@ pipeline {
 
     tools {
         // Maven을 사용하여 프로젝트를 빌드하기 위해 Jenkins에서 정의된 Maven 도구 이름을 사용합니다.
-        maven 'Maven3'
+        maven 'M3'
     }
 
     environment {
