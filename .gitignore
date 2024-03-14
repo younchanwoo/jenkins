@@ -1,0 +1,17 @@
+# Maven 빌드 시스템
+target/
+
+# 컴파일된 Java 클래스 파일
+*.class
+
+# IntelliJ IDEA 설정
+.idea/
+*.iml
+
+# Visual Studio Code 설정
+.vscode/
+
+# Eclipse 설정
+.classpath
+.project
+.settings/
