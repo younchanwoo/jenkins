@@ -1,6 +1,14 @@
 pipeline {
     agent any
 
+    // 다음 줄에서 파이프라인의 이름을 변경합니다.
+    options {
+        buildDiscarder(logRotator(numToKeepStr:'10'))
+        disableConcurrentBuilds()
+        timestamps()
+        timeout(time: 1, unit: 'HOURS')
+    }
+
     environment {
         TOMCAT_URL = 'http://localhost:8081/'
         TOMCAT_USER = 'admin'
