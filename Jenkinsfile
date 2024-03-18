@@ -8,11 +8,11 @@ pipeline {
 
     environment {
         // 배포될 Tomcat 서버의 정보를 환경 변수로 설정합니다.
-        TOMCAT_URL = 'http://localhost:8081/manager'
+        TOMCAT_URL = 'http://localhost:8081/'
         TOMCAT_USER = 'admin'
         TOMCAT_PASSWORD = 'admin'
         // WAR 파일의 위치를 지정합니다.
-        WAR_FILE = 'target/simple.war'
+        WAR_FILE = 'target/*.war'
     }
 
     stages {
