@@ -1,10 +1,5 @@
 pipeline {
-    agent any
-
-    tools {
-        // Maven을 사용하여 프로젝트를 빌드하기 위해 Jenkins에서 정의된 Maven 도구 이름을 사용합니다.
-        maven 'M3'
-    }
+    agent { label 'Built-in Node' } // 여기를 수정했습니다
 
     environment {
         // 배포될 Tomcat 서버의 정보를 환경 변수로 설정합니다.
@@ -37,7 +32,7 @@ pipeline {
                     sh """
                     curl -u ${TOMCAT_USER}:${TOMCAT_PASSWORD} \
                     --upload-file ${WAR_FILE} \
-                    "${TOMCAT_URL}/deploy?path=/simple&update=true"
+                    "${TOMCAT_URL}/manager/text/deploy?path=/simple&update=true"
                     """
                 }
             }
