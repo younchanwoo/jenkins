@@ -1,5 +1,5 @@
 pipeline {
-    agent { label 'Jenkins' } // Use the label from your built-in node
+    agent any // This will allow the job to run on any available agent
 
     environment {
         // Set the environment variables for the Tomcat server where the app will be deployed.
