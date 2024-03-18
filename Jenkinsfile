@@ -1,26 +1,26 @@
 pipeline {
-    agent { label 'Built-in Node' } // 여기를 수정했습니다
+    agent { label 'Jenkins' } // Use the label from your built-in node
 
     environment {
-        // 배포될 Tomcat 서버의 정보를 환경 변수로 설정합니다.
+        // Set the environment variables for the Tomcat server where the app will be deployed.
         TOMCAT_URL = 'http://localhost:8081/'
         TOMCAT_USER = 'admin'
         TOMCAT_PASSWORD = 'admin'
-        // WAR 파일의 위치를 지정합니다.
+        // Specify the location of the WAR file.
         WAR_FILE = 'target/*.war'
     }
 
     stages {
         stage('Checkout') {
             steps {
-                // Git 저장소에서 소스 코드를 체크아웃합니다.
+                // Checkout the source code from the Git repository.
                 git 'https://github.com/younchanwoo/jenkins.git'
             }
         }
 
         stage('Build') {
             steps {
-                // Maven을 사용하여 프로젝트를 클린 빌드하고 패키지합니다.
+                // Use Maven to clean build and package the project.
                 sh 'mvn clean package'
             }
         }
@@ -28,7 +28,7 @@ pipeline {
         stage('Deploy to Tomcat') {
             steps {
                 script {
-                    // 생성된 WAR 파일을 Tomcat 서버에 /simple 경로로 배포합니다.
+                    // Deploy the generated WAR file to the Tomcat server at the /simple path.
                     sh """
                     curl -u ${TOMCAT_USER}:${TOMCAT_PASSWORD} \
                     --upload-file ${WAR_FILE} \
